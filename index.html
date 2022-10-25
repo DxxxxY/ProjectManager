@@ -5,11 +5,138 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>ProjectManager</title>
 </head>
 
 <body>
-
+    <section id='main_container'>
+        <header>
+            <p>420-320 Project 1 - Academic Project Management</p>
+        </header>
+        <section id='middle-section'>
+            <section id='top-section'>
+                <form>
+                    <fieldset>
+                        <legend>Fill In All required fields</legend>
+                        <div class="input">
+                            <table>
+                                <!-- project_id -->
+                                <tr>
+                                    <td>
+                                        <label for="project_id">Project ID</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="project_id" id="project_id" required>
+                                    </td>
+                                </tr>
+                                <!-- owner name -->
+                                <tr>
+                                    <td>
+                                        <label for="owner_name">Owner Name</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="owner_name" id="owner_name" required>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="input">
+                            <!-- title -->
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="title">Title</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="title" id="title" required>
+                                    </td>
+                                </tr>
+                                <!-- category -->
+                                <tr>
+                                    <td>
+                                        <label for="category">Category</label>
+                                    </td>
+                                    <td>
+                                        <select name="category" id="category" required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="input">
+                            <!-- hours, rate and status -->
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="hours">Hours</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="hours" id="hours" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="rate">Rate</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="rate" id="rate" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="status">Status</label>
+                                    </td>
+                                    <td>
+                                        <select name="status" id="status" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="input">
+                            <!-- short description -->
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="short_description">Short Description</label>
+                                    </td>
+                                    <td>
+                                        <textarea name="short_description" id="short_description" cols="30" rows="4" required></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+            <section id='main-section'>
+                <section id='table-render-space'>
+                    <!-- here, the table will be rendered dynamically by your js code -->
+                </section>
+                <section id='table-html-space'>
+                    <!-- here, the table HTML code will be generated and shown in a textarea
+					that you create dynamically as well. -->
+                </section>
+            </section>
+        </section>
+        <footer>
+            <span>
+                <p>Serhiy Fedurtsya | 2135229 | Section 3 | © Fall 2022</p>
+                <p>Clovis Boucher | 2133295 | Section 3 | © Fall 2022</p>
+            </span>
+        </footer>
+    </section>
 </body>
 
 </html>

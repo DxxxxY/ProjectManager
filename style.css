@@ -1,0 +1,143 @@
+/* must use flex layout */
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    margin: 0;
+}
+
+#main_container {
+    width: 80%;
+    height: 97.5%;
+    padding: 2px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 99%;
+    margin-top: 10Fpx;
+    background-color: #64005d;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+}
+
+footer {
+    width: 99%;
+    margin-top: 10px;
+    background-color: #64005d;
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+}
+
+footer p {
+    margin: 0;
+}
+
+#middle-section {
+    border: solid black 3px;
+    margin-top: 10px;
+    width: 100%;
+    height: 74%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#top-section {
+    width: 95%;
+    height: 20%;
+    margin-top: 40px;
+    background-color: #f5f5dd;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#main-section {
+    margin-top: 20px;
+    background-color: skyblue;
+    width: 98%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+legend {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: bold;
+    color: red
+}
+
+table {
+    margin: 0;
+}
+
+fieldset {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+#table-render-space {
+    background-color: darksalmon;
+    width: 98%;
+    height: 47%;
+    margin-top: 20px;
+}
+
+#table-html-space {
+    background-color: red;
+    width: 98%;
+    height: 47%;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f5f5dd;
+    align-items: center;
+    text-align: center;
+}
+
+textarea {
+    margin-top: 20px;
+    width: 97.5%;
+    height: 84%;
+}
+
+input,
+textarea {
+    color: black;
+}
+
+table {
+    border: 1px dotted black;
+    padding: 5px;
+    background-color: white;
+    margin: 40px auto;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px;
+}
