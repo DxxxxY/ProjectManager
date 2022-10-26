@@ -1,3 +1,194 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"><title>ProjectManager</title></head><body><section id="main_container"><header><p>420-320 Project 1 - Academic Project Management</p></header><section id="middle-section"><section id="top-section"><form><fieldset><legend>Fill In All required fields</legend><div class="input"><!-- project id --><div class="entry"><div class="labelsquare"><label for="title">Project ID</label></div><input type="text" id="proj_id" required></div><!-- owner --><div class="entry"><div class="labelsquare"><label for="owner">Owner Name</label></div><input type="text" id="owner" required></div><!-- error popup under field --><div class="inputerror">&#8593;
-Incorrect format for Owner &#8593;
-</div></div><div class="input"><!-- title --><div class="entry"><div class="labelsquare"><label for="title">Title</label></div><input type="text" id="title" required></div><!-- category --><div class="entry"><div class="labelsquare"><label for="category">Category</label></div><select id="category" required><option value="practical">Practical</option><option value="technical">Technical</option><option value="special">Special</option></select></div></div><div class="input"><!-- hours --><div class="entry"><div class="labelsquare"><label for="hours">Hours</label></div><input type="number" id="hours" required></div><!-- rate --><div class="entry"><div class="labelsquare"><label for="rate">Rate</label></div><input type="number" id="rate" required></div><!-- status --><div class="entry"><div class="labelsquare"><label for="status">Status</label></div><select id="status" required><option value="planning">Planning</option><option value="ongoing">Ongoing</option><option value="completed">Completed</option></select></div></div><div class="input"><!-- short description --><div class="entry"><div class="labelsquare"><label for="shortdescription">Short Description</label></div><textarea id="shortdescription" cols="25" rows="4"></textarea></div></div></fieldset><div class="formcontrols"><button>Add</button><button>Reset</button></div></form></section><section id="main-section"><div class="tablecontrols"><button id="Write">Write (save) local</button><button id="Append">Append local</button><button id="Clear">Clear local</button><button id="Load">Load (read) local</button></div><input type="text" id="query" placeholder="Enter your query..."><table><thead><tr><th>Project ID</th><th>Owner</th><th>Title</th><th>Category</th><th>Hours</th><th>Rate</th><th>Status</th><th>Short Description</th></tr></thead><tbody id="table-body"></tbody></table></section></section><footer><span><p>Serhiy Fedurtsya | 2135229 | Section 3 | © Fall 2022</p><p>Clovis Boucher | 2133295 | Section 3 | © Fall 2022</p></span></footer></section></body></html>
+/* must use flex layout */
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    margin: 0;
+}
+
+div.input {
+    border: 1px dotted green;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+}
+
+div.entry:has(textarea) {
+    background-color: lightgray;
+    flex-direction: column;
+}
+
+div.entry {
+    margin: 0 0 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #d4d2d4;
+}
+
+div.inputerror {
+    margin: 0 0 10px;
+}
+
+div.labelsquare {
+    border: 1px dotted red;
+    /*height: 30px;*/
+    width: 100px;
+    text-align: right;
+    background-color: lightgray;
+}
+
+#main_container {
+    width: 70%;
+    padding: 3px;
+    height: 100%;
+    /*why not 100%*/
+    background-color: #d4d5ea;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #64005d;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+}
+
+footer p {
+    margin: 0;
+}
+
+#middle-section {
+    border: solid black 3px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 25;
+}
+
+footer {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #64005d;
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex: 4;
+}
+
+#top-section {
+    width: 100%;
+    padding: 4px;
+    padding-bottom: 100px;
+    background-color: #cfcbc9;
+    display: flex;
+    flex: 4;
+}
+
+#main-section {
+    background-color: #589c9e;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex: 5;
+}
+
+legend {
+    background-color: lightgray;
+    text-align: left;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #8b2639;
+}
+
+fieldset {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/* #table-render-space {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#table-html-space {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+
+form {
+    width: 100%;
+    padding: 0 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f5f5dd;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+div.formcontrols {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+input,
+select {
+    color: black;
+    width: 150px;
+    height: 25px;
+    box-sizing: border-box;
+}
+
+button {
+    border: 2px outset white;
+    width: 200px;
+    height: 40px;
+    background-color: #005fa9;
+    font-weight: bold;
+    font-size: 1.20rem;
+}
+
+div.tablecontrols button {
+    margin: 0 20px 0;
+}
+
+.middle .inputerror {
+    font-size: 0.8rem;
+    background-color: rgb(177, 55, 55) !important;
+    color: white;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
