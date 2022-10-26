@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    <section id='main_container'>
+    <section id="main_container">
         <header>
             <p>420-320 Project 1 - Academic Project Management</p>
         </header>
-        <section id='middle-section'>
-            <section id='top-section'>
+        <section id="middle-section">
+            <section id="top-section">
                 <form>
                     <fieldset>
                         <legend>Fill In All required fields</legend>
@@ -100,20 +100,41 @@
                                 <div class="labelsquare">
                                     <label for="shortdescription">Short Description</label>
                                 </div>
-                                <textarea id="shortdescription" cols="35" rows="7"></textarea>
+                                <textarea id="shortdescription" cols="25" rows="4"></textarea>
                             </div>
                         </div>
                     </fieldset>
+
+                    <div class="formcontrols">
+                        <button>Add</button>
+                        <button>Reset</button>
+                    </div>
                 </form>
             </section>
-            <section id='main-section'>
-                <section id='table-render-space'>
-                    <!-- here, the table will be rendered dynamically by your js code -->
-                </section>
-                <section id='table-html-space'>
-                    <!-- here, the table HTML code will be generated and shown in a textarea
-					that you create dynamically as well. -->
-                </section>
+            <section id="main-section">
+                <div class="tablecontrols">
+                    <button id="Write">Write (save) local</button>
+                    <button id="Append">Append local</button>
+                    <button id="Clear">Clear local</button>
+                    <button id="Load">Load (read) local</button>
+                </div>
+                <input type="text" id="query" placeholder="Enter your query...">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project ID</th>
+                            <th>Owner</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Hours</th>
+                            <th>Rate</th>
+                            <th>Status</th>
+                            <th>Short Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
             </section>
         </section>
         <footer>
