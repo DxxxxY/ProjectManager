@@ -19,6 +19,7 @@ body {
 div.input {
     border: 1px dotted green;
     padding: 20px;
+    width: 25%;
     display: flex;
     flex-direction: column;
 }
@@ -107,7 +108,7 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    flex: 5;
+    flex: 6;
 }
 
 legend {
@@ -142,11 +143,9 @@ div.formcontrols {
     align-items: center;
 }
 
-input,
+.entry > input,
 select {
-    color: black;/*
-    width: 150px;
-    height: 25px;*/
+    color: black;
     flex:3;
 }
 
