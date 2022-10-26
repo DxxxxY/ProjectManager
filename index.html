@@ -20,102 +20,88 @@
                     <fieldset>
                         <legend>Fill In All required fields</legend>
                         <div class="input">
-                            <table>
-                                <!-- project_id -->
-                                <tr>
-                                    <td>
-                                        <label for="project_id">Project ID</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="project_id" id="project_id" required>
-                                    </td>
-                                </tr>
-                                <!-- owner name -->
-                                <tr>
-                                    <td>
-                                        <label for="owner_name">Owner Name</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="owner_name" id="owner_name" required>
-                                    </td>
-                                </tr>
-                            </table>
+                            <!-- project id -->
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="title">Project ID</label>
+                                </div>
+                                <input type="text" id="proj_id" required>
+                            </div>
+
+                            <!-- owner -->
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="owner">Owner Name</label>
+                                </div>
+                                <input type="text" id="owner" required>
+                            </div>
+
+                            <!-- error popup under field -->
+                            <div class="inputerror">
+                                &#8593; Incorrect format for Owner &#8593;
+                            </div>
                         </div>
+
                         <div class="input">
                             <!-- title -->
-                            <table>
-                                <tr>
-                                    <td>
-                                        <label for="title">Title</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="title" id="title" required>
-                                    </td>
-                                </tr>
-                                <!-- category -->
-                                <tr>
-                                    <td>
-                                        <label for="category">Category</label>
-                                    </td>
-                                    <td>
-                                        <select name="category" id="category" required>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="title">Title</label>
+                                </div>
+                                <input type="text" id="title" required>
+                            </div>
+
+                            <!-- category -->
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="category">Category</label>
+                                </div>
+                                <select id="category" required>
+                                    <option value="practical">Practical</option>
+                                    <option value="technical">Technical</option>
+                                    <option value="special">Special</option>
+                                </select>
+                            </div>
                         </div>
+
                         <div class="input">
-                            <!-- hours, rate and status -->
-                            <table>
-                                <tr>
-                                    <td>
-                                        <label for="hours">Hours</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="hours" id="hours" required>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="rate">Rate</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="rate" id="rate" required>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="status">Status</label>
-                                    </td>
-                                    <td>
-                                        <select name="status" id="status" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </table>
+                            <!-- hours -->
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="hours">Hours</label>
+                                </div>
+                                <input type="number" id="hours" required>
+                            </div>
+
+                            <!-- rate -->
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="rate">Rate</label>
+                                </div>
+                                <input type="number" id="rate" required>
+                            </div>
+
+                            <!-- status -->
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="status">Status</label>
+                                </div>
+                                <select id="status" required>
+                                    <option value="planning">Planning</option>
+                                    <option value="ongoing">Ongoing</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
                         </div>
+
                         <div class="input">
                             <!-- short description -->
-                            <table>
-                                <tr>
-                                    <td>
-                                        <label for="short_description">Short Description</label>
-                                    </td>
-                                    <td>
-                                        <textarea name="short_description" id="short_description" cols="30" rows="4" required></textarea>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="entry">
+                                <div class="labelsquare">
+                                    <label for="shortdescription">Short Description</label>
+                                </div>
+                                <textarea id="shortdescription" cols="35" rows="7"></textarea>
+                            </div>
                         </div>
                     </fieldset>
                 </form>

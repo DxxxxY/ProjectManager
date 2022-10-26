@@ -1,5 +1,9 @@
 /* must use flex layout */
 
+* {
+    outline: none;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -8,6 +12,31 @@ body {
     height: 100vh;
     align-items: center;
     margin: 0;
+}
+
+div.input {
+    border: 1px dotted green;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.entry {
+    margin: 0 0 10px;
+    display: flex;
+    justify-content: center;
+}
+
+div.inputerror {
+    margin: 0 0 10px;
+}
+
+div.labelsquare {
+    border: 1px dotted red;
+    /* height: 30px; */
+    width: 100px;
+    text-align: right;
+    background-color: lightgray;
 }
 
 #main_container {
@@ -87,12 +116,12 @@ legend {
 
 table {
     margin: 0;
+    border-spacing: 0 10px;
 }
 
 fieldset {
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
 }
 
 #table-render-space {
@@ -119,25 +148,30 @@ form {
     text-align: center;
 }
 
-textarea {
-    margin-top: 20px;
-    width: 97.5%;
-    height: 84%;
-}
-
 input,
-textarea {
+select {
     color: black;
+    width: 210px;
+    height: 30px;
+    box-sizing: border-box;
 }
 
-table {
-    border: 1px dotted black;
-    padding: 5px;
-    background-color: white;
-    margin: 40px auto;
+td:first-of-type {
+    background-color: lightgray;
+    border: 1px dotted red;
 }
 
-td {
-    border: 1px solid black;
-    padding: 5px;
+.inputerror {
+    font-size: 0.8rem;
+    background-color: rgb(177, 55, 55) !important;
+    color: white;
+}
+
+tr {
+    margin: 0 0 1vh;
+    background-color: lightgray;
+}
+
+tr:last-of-type {
+    margin: 0;
 }
