@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <title>ProjectManager</title>
 </head>
 
@@ -23,9 +23,10 @@
                             <!-- project id -->
                             <div class="entry">
                                 <div class="labelsquare">
-                                    <label for="title">Project ID</label>
+                                    <label for="proj_id">Project ID</label>
                                 </div>
                                 <input type="text" id="proj_id" required>
+                                <img class="correct" src="images/check.svg" alt="correct" />
                             </div>
 
                             <!-- owner -->
@@ -34,6 +35,7 @@
                                     <label for="owner">Owner Name</label>
                                 </div>
                                 <input type="text" id="owner" required>
+                                <img class="wrong" src="images/wrong.svg" alt="wrong" />
                             </div>
 
                             <!-- error popup under field -->
@@ -119,6 +121,9 @@
                     <button id="Load">Load (read) local</button>
                 </div>
                 <input type="text" id="query" placeholder="Enter your query...">
+                <div class="status">
+                    Found 4 Projects in local storage
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -135,6 +140,42 @@
                         </tr>
                     </thead>
                     <tbody id="table-body">
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>Project 1</td>
+                            <td>Practical</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td>Planning</td>
+                            <td>Short description</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>John Doe</td>
+                            <td>Project 2</td>
+                            <td>Technical</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td>Planning</td>
+                            <td>Short description</td>
+                            <td>Edit</td>
+                            <td>Delett</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>John Smith</td>
+                            <td>Project 3</td>
+                            <td>Special</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td>Planning</td>
+                            <td>Short description</td>
+                            <td>Edit</td>
+                            <td>Delett</td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
