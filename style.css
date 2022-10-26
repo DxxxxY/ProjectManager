@@ -3,6 +3,7 @@
 * {
     outline: none;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
@@ -127,23 +128,6 @@ fieldset {
     width: 100%;
 }
 
-
-/* #table-render-space {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#table-html-space {
-    background-color: white;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-} */
-
 form {
     width: 100%;
     padding: 0 20px 0;
@@ -179,8 +163,13 @@ button {
     font-size: 1.20rem;
 }
 
+button:active {
+    background-color: grey;
+    border: 4px outset white;
+}
+
 div.tablecontrols button {
-    margin: 0 20px 0;
+    margin: 20px;
 }
 
 .inputerror {
@@ -192,3 +181,22 @@ div.tablecontrols button {
     align-items: center;
     justify-content: center;
 }
+
+#query {
+    width: 60%;
+    height: 35px;
+    margin: 5px;
+}
+
+table {
+    border: 1px solid black;
+    width: 97.5%;
+    background-color: #f3d6dc;
+}
+
+th {
+    background-color: #004c27;
+    color: white;
+}
+
+tr:nth-child(odd) {}
