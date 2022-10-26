@@ -26,7 +26,6 @@ div.input {
 }
 
 div.entry:has(textarea) {
-    background-color: lightgray;
     flex-direction: column;
 }
 
