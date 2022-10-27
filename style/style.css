@@ -43,9 +43,12 @@ div.labelsquare {
     flex: 3;
     text-align: right;
 }
-.wrong, .correct {
+
+.wrong,
+.correct {
     flex: 1;
 }
+
 #main_container {
     width: 70%;
     padding: 3px;
@@ -143,10 +146,10 @@ div.formcontrols {
     align-items: center;
 }
 
-.entry > input,
+.entry>input,
 select {
     color: black;
-    flex:3;
+    flex: 3;
 }
 
 button {
@@ -167,7 +170,6 @@ div.tablecontrols button {
     margin: 20px;
 }
 
-
 .inputerror {
     font-size: 1rem;
     background-color: rgb(177, 55, 55) !important;
@@ -186,7 +188,7 @@ div.tablecontrols button {
 
 table {
     border: 1px dotted red;
-    width: 97.5%;
+    width: 100%;
     background-color: #eaf3f8;
     text-align: center;
 }
@@ -213,6 +215,12 @@ div.status {
 
 tr {
     background-color: white;
+}
+
+div:has(table) {
+    height: 200px;
+    overflow-y: scroll;
+    width: 97.5%;
 }
 
 tr:nth-child(odd) {
