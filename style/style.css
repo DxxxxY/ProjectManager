@@ -221,7 +221,7 @@ tr:nth-child(odd) {
     background-color: #bfbfbf;
 }
 #overflow {  
-    height: 200px;
+    max-height: 200px;
     overflow-y: scroll;
     width: 100%;
 } 
