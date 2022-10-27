@@ -194,6 +194,7 @@ button:active {
     background-color: rgb(177, 55, 55) !important;
     color: white;
     height: 30px;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
