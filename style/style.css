@@ -37,10 +37,6 @@ div.entry {
     background-color: #f5f5f5;
 }
 
-div.inputerror {
-    margin: 10px;
-}
-
 div.labelsquare {
     border: 1px dotted red;
     width: 100px;
