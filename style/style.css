@@ -43,7 +43,7 @@ div.inputerror {
 
 div.labelsquare {
     border: 1px dotted red;
-    flex: 3;
+    width: 100px;
     text-align: right;
 }
 
