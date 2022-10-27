@@ -26,7 +26,9 @@
                                     <label for="proj_id">Project ID</label>
                                 </div>
                                 <input type="text" id="proj_id" required>
-                                <img class="correct" src="images/right.png" alt="correct" />
+                                <div class="input_img">
+                                    <img class="correct" src="images/right.png" alt="correct" />
+                                </div>
                             </div>
 
                             <!-- owner -->
@@ -35,7 +37,9 @@
                                     <label for="owner">Owner Name</label>
                                 </div>
                                 <input type="text" id="owner" required>
-                                <img class="wrong" src="images/wrong.png" alt="wrong" />
+                                <div class="input_img">
+                                    <img class="wrong" src="images/wrong.png" alt="wrong" />
+                                </div>
                             </div>
 
                             <!-- error popup under field -->
@@ -51,6 +55,7 @@
                                     <label for="title">Title</label>
                                 </div>
                                 <input type="text" id="title" required>
+                                <div class="input_img"></div>
                             </div>
 
                             <!-- category -->
@@ -63,6 +68,7 @@
                                     <option value="technical">Technical</option>
                                     <option value="special">Special</option>
                                 </select>
+                                <div class="input_img"></div>
                             </div>
                         </div>
 
@@ -73,6 +79,7 @@
                                     <label for="hours">Hours</label>
                                 </div>
                                 <input type="number" id="hours" required>
+                                <div class="input_img"></div>
                             </div>
 
                             <!-- rate -->
@@ -81,6 +88,7 @@
                                     <label for="rate">Rate</label>
                                 </div>
                                 <input type="number" id="rate" required>
+                                <div class="input_img"></div>
                             </div>
 
                             <!-- status -->
@@ -93,6 +101,7 @@
                                     <option value="ongoing">Ongoing</option>
                                     <option value="completed">Completed</option>
                                 </select>
+                                <div class="input_img"></div>
                             </div>
                         </div>
 
@@ -114,324 +123,322 @@
                 </form>
             </section>
             <section id="main-section">
-                    <div class="tablecontrols">
-                        <button id="Write">Write (save) local</button>
-                        <button id="Append">Append local</button>
-                        <button id="Clear">Clear local</button>
-                        <button id="Load">Load (read) local</button>
-                    </div>
-                    <input type="text" id="query" placeholder="Enter your query...">
-                    <b>
-                        Found 4 Projects in local storage
-                    </b>
-                    <div id="overflow">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Project ID</th>
-                                    <th>Owner</th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Hours</th>
-                                    <th>Rate</th>
-                                    <th>Status</th>
-                                    <th>Short Description</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table-body">
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>Project 1</td>
-                                    <td>Practical</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>John Doe</td>
-                                    <td>Project 2</td>
-                                    <td>Technical</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>John Smith</td>
-                                    <td>Project 3</td>
-                                    <td>Special</td>
-                                    <td>100</td>
-                                    <td>100</td>
-                                    <td>Planning</td>
-                                    <td>Short description</td>
-                                    <td><img class="edit" src="images/edit.png" alt="edit" /></td>
-                                    <td><img class="trash" src="images/trash.png" alt="trash" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="tablecontrols">
+                    <button id="Write">Write (save) local</button>
+                    <button id="Append">Append local</button>
+                    <button id="Clear">Clear local</button>
+                    <button id="Load">Load (read) local</button>
+                </div>
+                <input type="text" id="query" placeholder="Enter your query...">
+                <b>Found 4 Projects in local storage</b>
+                <div id="overflow">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Project ID</th>
+                                <th>Owner</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Hours</th>
+                                <th>Rate</th>
+                                <th>Status</th>
+                                <th>Short Description</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>Project 1</td>
+                                <td>Practical</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>John Doe</td>
+                                <td>Project 2</td>
+                                <td>Technical</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John Smith</td>
+                                <td>Project 3</td>
+                                <td>Special</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>Planning</td>
+                                <td>Short description</td>
+                                <td><img class="edit" src="images/edit.png" alt="edit" /></td>
+                                <td><img class="trash" src="images/trash.png" alt="trash" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </section>
         <footer>

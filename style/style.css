@@ -15,9 +15,11 @@ body {
     align-items: center;
     margin: 0;
 }
-div{
+
+div {
     display: block;
 }
+
 div.input {
     border: 1px dotted green;
     padding: 20px;
@@ -142,16 +144,38 @@ form {
 }
 
 div.formcontrols {
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.entry>input,
+
+/* .entry>input,
 select {
     color: black;
     flex: 3;
+} */
+
+input,
+select {
+    color: black;
+    width: 150px;
+    height: 25px;
+    box-sizing: border-box;
+}
+
+div.entry input {
+    height: 100%;
+}
+
+div.entry {
+    margin: 0 0 10px;
+    width: 250px;
+    display: flex;
+    /* justify-content: center; */
+    background-color: #f5f5f5;
 }
 
 button {
@@ -160,6 +184,7 @@ button {
     height: 40px;
     background-color: #005fa9;
     font-weight: bold;
+    color: white;
     font-size: 1.20rem;
 }
 
@@ -167,8 +192,6 @@ button:active {
     background-color: grey;
     border: 4px outset white;
 }
-
-
 
 .inputerror {
     font-size: 1rem;
@@ -220,12 +243,19 @@ tr {
 tr:nth-child(odd) {
     background-color: #bfbfbf;
 }
-#overflow {  
+
+#overflow {
     max-height: 200px;
     overflow-y: scroll;
     width: 100%;
-} 
+}
 
 div.tablecontrols button {
     margin: 20px;
+}
+
+.input_img {
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
