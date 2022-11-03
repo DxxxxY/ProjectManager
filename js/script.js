@@ -9,30 +9,38 @@ const projects = [{
 }]
 
 const writeLocal = () => {
+    //set (overwrite)
     localStorage.setItem("data", JSON.stringify(projects))
+
     console.log("written", projects)
 }
 
 const appendLocal = () => {
     const local = JSON.parse(localStorage.getItem("data"))
 
+    //write only new projects
     let toWrite = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
     toWrite.push(...projects)
 
     localStorage.setItem("data", JSON.stringify(toWrite))
+
     console.log("appended", toWrite)
 }
 
 const clearLocal = () => {
+    //clear
     localStorage.clear()
+
     console.log("cleared")
 }
 
 const loadLocal = () => {
     const local = JSON.parse(localStorage.getItem("data"))
 
+    //load only new projects
     let toLoad = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
     projects.push(...toLoad)
+
     console.log("loaded", projects)
 }
 
