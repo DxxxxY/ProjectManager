@@ -184,10 +184,6 @@ button {
     font-size: 1.20rem;
 }
 
-button:active {
-    background-color: grey;
-    border: 4px outset white;
-}
 
 .inputerror {
     font-size: 1rem;
