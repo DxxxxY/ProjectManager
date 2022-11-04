@@ -85,6 +85,16 @@ const updateTable = projects => {
                     <td><img class="trash" src="images/trash.png" alt="trash" /></td>
                 </tr>`
     }).join("")
+
+    //add event listeners to edit and delete buttons
+    const editButtons = document.querySelectorAll(".edit")
+    const deleteButtons = document.querySelectorAll(".trash")
+
+    editButtons.outerHTML = editButtons.outerHTML
+    deleteButtons.outerHTML = deleteButtons.outerHTML
+
+    editButtons.forEach(button => button.addEventListener("click", editProject))
+    deleteButtons.forEach(button => button.addEventListener("click", deleteProject))
 }
 
 const getProjects = query => {
@@ -97,6 +107,14 @@ const getProjects = query => {
             if (project[property].toString().toLowerCase().includes(query.toLowerCase())) return true
         }
     })
+}
+
+const editProject = e => {
+    console.log("edit", e.target)
+}
+
+const deleteProject = e => {
+    console.log("delete", e.target)
 }
 
 const write = document.querySelector("#write")
