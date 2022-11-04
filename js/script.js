@@ -55,7 +55,7 @@ const clearLocal = () => {
 
 const loadLocal = () => {
     const local = JSON.parse(localStorage.getItem("data"))
-    if (!local) return updateTable()
+    if (!local) return updateTable(projects)
 
     //load only new projects
     let toLoad = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
@@ -63,10 +63,10 @@ const loadLocal = () => {
 
     console.log("loaded", projects)
 
-    updateTable()
+    updateTable(projects)
 }
 
-const updateTable = () => {
+const updateTable = projects => {
     //get table
     const table = document.querySelector("tbody")
 
@@ -87,12 +87,30 @@ const updateTable = () => {
     }).join("")
 }
 
+const getProjects = query => {
+    //return all if query is empty
+    if (!query) return projects
+
+    //return projects from projects array that one of their properties contains query
+    return projects.filter(project => {
+        for (const property in project) {
+            if (project[property].toString().toLowerCase().includes(query.toLowerCase())) return true
+        }
+    })
+}
+
 const write = document.querySelector("#write")
 const append = document.querySelector("#append")
 const clear = document.querySelector("#clear")
 const load = document.querySelector("#load")
 
+const query = document.querySelector("#query")
+
 write.addEventListener("click", writeLocal)
 append.addEventListener("click", appendLocal)
 clear.addEventListener("click", clearLocal)
 load.addEventListener("click", loadLocal)
+
+query.addEventListener("input", () => {
+    updateTable(getProjects(query.value))
+})
