@@ -27,9 +27,6 @@
                                     <label for="proj_id">Project ID</label>
                                 </div>
                                 <input type="text" id="proj_id" required>
-                                <div class="input_img">
-                                    <img class="correct" src="images/right.png" alt="correct" />
-                                </div>
                             </div>
 
                             <!-- owner -->
@@ -37,10 +34,7 @@
                                 <div class="labelsquare">
                                     <label for="owner">Owner Name</label>
                                 </div>
-                                <input type="text" id="owner" required>
-                                <div class="input_img">
-                                    <img class="wrong" src="images/wrong.png" alt="wrong" />
-                                </div>
+                                <input type="text" id="owner" required> 
                             </div>
 
                             <!-- error popup under field -->
@@ -55,8 +49,7 @@
                                 <div class="labelsquare">
                                     <label for="title">Title</label>
                                 </div>
-                                <input type="text" id="title" required>
-                                <div class="input_img"></div>
+                                <input type="text" id="title" pattern="^[A-Z]+[A-z a-z]{.}$" required>
                             </div>
 
                             <!-- category -->
@@ -69,7 +62,6 @@
                                     <option value="technical">Technical</option>
                                     <option value="special">Special</option>
                                 </select>
-                                <div class="input_img"></div>
                             </div>
                         </div>
 
@@ -80,7 +72,6 @@
                                     <label for="hours">Hours</label>
                                 </div>
                                 <input type="number" id="hours" required>
-                                <div class="input_img"></div>
                             </div>
 
                             <!-- rate -->
@@ -89,7 +80,6 @@
                                     <label for="rate">Rate</label>
                                 </div>
                                 <input type="number" id="rate" required>
-                                <div class="input_img"></div>
                             </div>
 
                             <!-- status -->
@@ -102,7 +92,6 @@
                                     <option value="ongoing">Ongoing</option>
                                     <option value="completed">Completed</option>
                                 </select>
-                                <div class="input_img"></div>
                             </div>
                         </div>
 
@@ -119,7 +108,7 @@
 
                     <div class="formcontrols">
                         <button id="Add">Add</button>
-                        <button>Reset</button>
+                        <button type="reset">Reset</button>
                     </div>
                 </form>
             </section>

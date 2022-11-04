@@ -1,13 +1,35 @@
 let form = document.getElementsByTagName("form")[0]
 let addButton = document.getElementById("Add");
 let inputs = document.querySelectorAll(".entry>input, .entry>textarea, select");
-alert(inputs.length);
+/*let entry = document.getElementsByClassName("entry")*/
+let imgs = [];
 inputs.forEach(input => {
-    console.log(input)
-    input.addEventListener("change", formValidation);
+    let img = document.createElement('img')
+    img.setAttribute('class',"wrong")
+    img.setAttribute('id',input.id+"-img")
+    img.setAttribute('src',"images/wrong.png")
+    div = document.createElement('div')
+        div.appendChild(img)
+    input.parentElement.appendChild(div)
+
+    if(input.id=="shortdescription")
+    {
+        
+        input.parentElement.insertBefore(div,input);
+    }
+    input.addEventListener("blur", formValidation);   
 })
 
-function formValidation() {
+function formValidation(e) {
+    let img = document.getElementById(e.target.id+"-img");
+    if (e.target.validity.valid)
+    {
+        img.class = "correct";
+        img.src="images/right.png";
+    }else if (!e.target.validity.valid) {
+        img.class = 'wrong';
+        img.src="images/wrong.png";
+    }
     if (!form.valid) {
         addButton.disabled = true;
         addButton.style.backgroundColor = "grey";
