@@ -1,8 +1,6 @@
-let form = document.getElementsByTagName("form")[0]
+let fieldset = document.getElementsByTagName("fieldset")[0]
 let addButton = document.getElementById("Add");
 let inputs = document.querySelectorAll(".entry>input, .entry>textarea, select");
-/*let entry = document.getElementsByClassName("entry")*/
-let imgs = [];
 inputs.forEach(input => {
     let img = document.createElement('img')
     img.setAttribute('class',"wrong")
@@ -14,13 +12,18 @@ inputs.forEach(input => {
 
     if(input.id=="shortdescription")
     {
-        
         input.parentElement.insertBefore(div,input);
     }
-    input.addEventListener("blur", formValidation);   
+    input.addEventListener("blur", fieldsetValidation);   
 })
-
-function formValidation(e) {
+if (!fieldset.validity.valid) {
+    addButton.disabled = true;
+    addButton.style.backgroundColor = "grey";
+}
+function fieldsetValidation(e) {
+    if( document.getElementById('em-'+e.target.id)!=null){
+        document.getElementById('em-'+e.target.id).remove();
+    }
     let img = document.getElementById(e.target.id+"-img");
     if (e.target.validity.valid)
     {
@@ -29,11 +32,30 @@ function formValidation(e) {
     }else if (!e.target.validity.valid) {
         img.class = 'wrong';
         img.src="images/wrong.png";
+        errorMsg = document.createElement('p');
+        errorMsg.setAttribute('id','em-'+e.target.id);
+        errorMsg.setAttribute('class','inputerror');
+        errorMsg.textContent = "&#8593; Incorrect format for "+e.target.id+" &#8593;";
+        e.target.parentElement.parentElement.appendChild(errorMsg,e.target.parentElement);
     }
-    if (!form.valid) {
+    console.log(fieldset.validity.valid)
+    if (formvalid()) {
+        addButton.disabled = false;
+        addButton.style.backgroundColor = "";
+    }else
+    {
         addButton.disabled = true;
         addButton.style.backgroundColor = "grey";
     }
+}
+function formvalid(){
+    valid = true
+    inputs.forEach(element => {
+      if(!element.validity.valid){
+        valid = false;
+      }  
+    });
+    return valid;
 }
 //______________________________________________
 
@@ -107,16 +129,6 @@ const updateTable = projects => {
                     <td><img class="trash" src="images/trash.png" alt="trash" /></td>
                 </tr>`
     }).join("")
-
-    //add event listeners to edit and delete buttons
-    const editButtons = document.querySelectorAll(".edit")
-    const deleteButtons = document.querySelectorAll(".trash")
-
-    editButtons.outerHTML = editButtons.outerHTML
-    deleteButtons.outerHTML = deleteButtons.outerHTML
-
-    editButtons.forEach(button => button.addEventListener("click", editProject))
-    deleteButtons.forEach(button => button.addEventListener("click", deleteProject))
 }
 
 const getProjects = query => {
@@ -129,14 +141,6 @@ const getProjects = query => {
             if (project[property].toString().toLowerCase().includes(query.toLowerCase())) return true
         }
     })
-}
-
-const editProject = e => {
-    console.log("edit", e.target)
-}
-
-const deleteProject = e => {
-    console.log("delete", e.target)
 }
 
 const write = document.querySelector("#write")

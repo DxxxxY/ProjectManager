@@ -252,3 +252,7 @@ div.tablecontrols button {
     display: flex;
     align-items: center;
 }
+p {
+    margin:0%;
+    padding: 0%;
+}
