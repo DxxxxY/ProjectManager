@@ -22,93 +22,106 @@
                         <legend>Fill In All required fields</legend>
                         <div class="input">
                             <!-- project id -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="proj_id">Project ID</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="proj_id">Project ID</label>
+                                    </div>
+                                    <input type="text" id="proj_id" required>
                                 </div>
-                                <input type="text" id="proj_id" required>
                             </div>
 
                             <!-- owner -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="owner">Owner Name</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="owner">Owner Name</label>
+                                    </div>
+                                    <input type="text" id="owner" required> 
                                 </div>
-                                <input type="text" id="owner" required> 
                             </div>
 
-                            <!-- error popup under field -->
-                            <p class="inputerror">
-                                &#8593; Incorrect format for Owner &#8593;
-                            </p>
+                            
                         </div>
 
                         <div class="input">
                             <!-- title -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="title">Title</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="title">Title</label>
+                                    </div>
+                                    <input type="text" id="title" pattern="^[A-Z]+[A-z a-z]*$" required>
                                 </div>
-                                <input type="text" id="title" pattern="^[A-Z]+[A-z a-z]$" required>
                             </div>
 
                             <!-- category -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="category">Category</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="category">Category</label>
+                                    </div>
+                                    <select id="category" required>
+                                        <option value="practical">Practical</option>
+                                        <option value="technical">Technical</option>
+                                        <option value="special">Special</option>
+                                    </select>
                                 </div>
-                                <select id="category" required>
-                                    <option value="practical">Practical</option>
-                                    <option value="technical">Technical</option>
-                                    <option value="special">Special</option>
-                                </select>
                             </div>
                         </div>
 
                         <div class="input">
                             <!-- hours -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="hours">Hours</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="hours">Hours</label>
+                                    </div>
+                                    <input type="number" id="hours" required>
                                 </div>
-                                <input type="number" id="hours" required>
                             </div>
 
                             <!-- rate -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="rate">Rate</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="rate">Rate</label>
+                                    </div>
+                                    <input type="number" id="rate" required>
                                 </div>
-                                <input type="number" id="rate" required>
                             </div>
 
                             <!-- status -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="status">Status</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="status">Status</label>
+                                    </div>
+                                    <select id="status" required>
+                                        <option value="planning">Planning</option>
+                                        <option value="ongoing">Ongoing</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
                                 </div>
-                                <select id="status" required>
-                                    <option value="planning">Planning</option>
-                                    <option value="ongoing">Ongoing</option>
-                                    <option value="completed">Completed</option>
-                                </select>
                             </div>
                         </div>
 
                         <div class="input">
                             <!-- short description -->
-                            <div class="entry">
-                                <div class="labelsquare">
-                                    <label for="shortdescription">Short Description</label>
+                            <div class="entryBox">
+                                <div class="entry">
+                                    <div class="labelsquare">
+                                        <label for="shortdescription">Short Description</label>
+                                    </div>
+                                    <textarea id="shortdescription" cols="25" rows="4"></textarea>
                                 </div>
-                                <textarea id="shortdescription" cols="25" rows="4"></textarea>
                             </div>
                         </div>
                     </fieldset>
 
                     <div class="formcontrols">
-                        <button id="Add">Add</button>
-                        <button type="reset">Reset</button>
+                        <button id="Add" type="button">Add</button>
+                        <button id="resetbutton" type="button">Reset</button>
                     </div>
                 </form>
             </section>

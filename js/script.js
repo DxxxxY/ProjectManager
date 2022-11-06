@@ -1,6 +1,12 @@
 let fieldset = document.getElementsByTagName("fieldset")[0]
+let reset = document.getElementById('resetbutton');
+let form = document.getElementsByTagName('form')[0];
 let addButton = document.getElementById("Add");
 let inputs = document.querySelectorAll(".entry>input, .entry>textarea, select");
+
+reset.addEventListener("click", resetform,true);
+
+//input event loop
 inputs.forEach(input => {
     let img = document.createElement('img')
     img.setAttribute('class',"wrong")
@@ -14,40 +20,40 @@ inputs.forEach(input => {
     {
         input.parentElement.insertBefore(div,input);
     }
-    input.addEventListener("blur", fieldsetValidation);   
+    input.addEventListener("blur", formValidation);   
+    formValidation(input);
 })
-if (!fieldset.validity.valid) {
-    addButton.disabled = true;
-    addButton.style.backgroundColor = "grey";
-}
-function fieldsetValidation(e) {
-    if( document.getElementById('em-'+e.target.id)!=null){
-        document.getElementById('em-'+e.target.id).remove();
+//handler
+function formValidation(e) {
+    if(e.target!=null)
+    {e = e.target;}
+    if( document.getElementById('em-'+e.id)!=null){
+        document.getElementById('em-'+e.id).remove();
     }
-    let img = document.getElementById(e.target.id+"-img");
-    if (e.target.validity.valid)
+    let img = document.getElementById(e.id+"-img");
+    if (e.validity.valid)
     {
         img.class = "correct";
         img.src="images/right.png";
-    }else if (!e.target.validity.valid) {
+    }else if (!e.validity.valid) {
         img.class = 'wrong';
         img.src="images/wrong.png";
         errorMsg = document.createElement('p');
-        errorMsg.setAttribute('id','em-'+e.target.id);
+        errorMsg.setAttribute('id','em-'+e.id);
         errorMsg.setAttribute('class','inputerror');
-        errorMsg.textContent = "&#8593; Incorrect format for "+e.target.id+" &#8593;";
-        e.target.parentElement.parentElement.appendChild(errorMsg,e.target.parentElement);
+        errorMsg.textContent = "↑ Incorrect format for "+e.id+" ↑";
+        e.parentElement.parentElement.append(errorMsg);
     }
-    console.log(fieldset.validity.valid)
-    if (formvalid()) {
-        addButton.disabled = false;
-        addButton.style.backgroundColor = "";
-    }else
-    {
-        addButton.disabled = true;
-        addButton.style.backgroundColor = "grey";
-    }
+    formvalid(); 
 }
+//reset button handler
+function resetform(e){
+ form.reset();
+ inputs.forEach(element => {
+    formValidation(element);
+ });
+}
+//check if form inputs all valid
 function formvalid(){
     valid = true
     inputs.forEach(element => {
@@ -55,7 +61,15 @@ function formvalid(){
         valid = false;
       }  
     });
-    return valid;
+    if (valid)
+    {
+        addButton.disabled = false;
+        addButton.style.backgroundColor = "";
+    }else
+    {
+        addButton.disabled = true;
+        addButton.style.backgroundColor = "grey";
+    }
 }
 //______________________________________________
 

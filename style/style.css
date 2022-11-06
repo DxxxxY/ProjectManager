@@ -32,13 +32,22 @@ div.entry:has(textarea) {
     flex-direction: column;
 }
 
-div.entry {
+.entryBox {
+    background-color: #f5f5f5;
+    margin-bottom: 10px;
+    padding: 2px;
+    width: fit-content;
+}
+.entry {
+    margin: 0 0 0px;
+    width: 250px;
     display: flex;
+    /* justify-content: center; */
     background-color: #f5f5f5;
 }
 
 div.labelsquare {
-    border: 1px dotted red;
+    border: 1px dotted #8f020a;
     width: 100px;
     text-align: right;
 }
@@ -166,13 +175,7 @@ div.entry input {
     height: 100%;
 }
 
-div.entry {
-    margin: 0 0 10px;
-    width: 250px;
-    display: flex;
-    /* justify-content: center; */
-    background-color: #f5f5f5;
-}
+
 
 button {
     border: 2px outset white;
@@ -187,7 +190,7 @@ button {
 
 .inputerror {
     font-size: 1rem;
-    background-color: rgb(177, 55, 55) !important;
+    background-color: rgb(135, 2, 10) !important;
     color: white;
     height: 30px;
     width: 90%;
@@ -253,6 +256,6 @@ div.tablecontrols button {
     align-items: center;
 }
 p {
-    margin:0%;
+    margin:2px;
     padding: 0%;
 }
