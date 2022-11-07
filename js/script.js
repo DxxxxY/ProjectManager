@@ -76,20 +76,17 @@ add.addEventListener("click", e => {
     const project = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
     projects.push(project)
     updateTable(projects)
+
     console.log(project)
 })
 
+document.querySelectorAll(".edit").forEach(edit => {
+    console.log(edit)
+
+})
+
 //sample project array
-const projects = [{
-    proj_id: 1,
-    owner: "John",
-    title: "Project 1",
-    category: "Category 1",
-    hours: 10,
-    rate: 100,
-    status: "In Progress",
-    description: "Simple description",
-}]
+const projects = []
 
 const writeLocal = () => {
     //set (overwrite)
@@ -149,6 +146,76 @@ const updateTable = projects => {
                     <td><img class="trash" src="images/trash.png" alt="trash" /></td>
                 </tr>`
     }).join("")
+
+    document.querySelector("img.edit:last-child").addEventListener("click", e => {
+        console.log("edit")
+
+        //get table row matching proj_id
+        const row = e.target.parentElement.parentElement
+
+        //get project from projects array matching proj_id
+        // const project = projects.find(project => project.proj_id === row.children[0].textContent)
+
+        //clone inputs from form above
+        let inputs = Array.from(document.querySelectorAll(".entry>input, .entry>textarea, select")).map(input => input.cloneNode(true))
+
+        console.log(inputs)
+
+        //set td values to inputs
+        // console.log(row.children)
+
+        //if row contains inputs, remove them and set td values to inputs
+        if (row.children[0].children[0]) {
+            inputs = Array.from(row.children).map(td => td.children[0])
+
+            const updatedProject = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
+
+            inputs.forEach(input => {
+                console.log(input)
+            })
+
+            row.innerHTML = Array.from(row.children).filter(child => child.children[0].tagName != "IMG").map((td, i) => {
+                return `<td>${td.children[0].value}</td>`
+            }).join("") + `<td><img class="edit" src="images/edit.png" alt="edit" /></td>` + `<td><img class="trash" src="images/trash.png" alt="trash" /></td>`
+
+            //update project in projects
+            const index = projects.findIndex(project => project.proj_id == row.children[0].textContent)
+
+            projects.forEach(proj => {
+                console.log(row.children[0])
+                console.log(proj.proj_id, row.children[0].textContent)
+                console.log(proj.proj_id == row.children[0].textContent)
+            })
+
+            console.log(projects[index])
+
+            // projects[index] = Object.fromEntries(Array.from(row.children).map(td => {
+            //     console.log(td.children[0])
+            //         // console.log([td.children[0].id, td.children[0].value])
+
+            // }))
+
+            // projects[index] = Array.from(row.children).forEach(td => {
+            //     console.log(td)
+            //         // console.log([td.children[0].id, td.children[0].value])
+
+            // })
+
+            projects[index] = updatedProject
+
+            return
+        }
+
+        Array.from(row.children).forEach((td, i) => {
+            if (!inputs[i]) return
+
+            inputs[i].className = "edit"
+            inputs[i].value = td.textContent
+
+            td.textContent = ""
+            td.appendChild(inputs[i])
+        })
+    })
 }
 
 const getProjects = query => {
