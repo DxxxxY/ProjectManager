@@ -2,7 +2,7 @@ let fieldset = document.getElementsByTagName("fieldset")[0]
 let reset = document.getElementById('resetbutton');
 let form = document.getElementsByTagName('form')[0];
 let addButton = document.getElementById("Add");
-let inputs = document.querySelectorAll(".entry>input, .entry>textarea, select");
+let inputs = document.querySelectorAll(".entry>input, .entry>textarea, .entry>select");
 
 reset.addEventListener("click", resetform, true);
 
@@ -13,11 +13,12 @@ inputs.forEach(input => {
     img.setAttribute('id', input.id + "-img")
     img.setAttribute('src', "images/wrong.png")
     div = document.createElement('div')
+    div.className = "imgwrap"
     div.appendChild(img)
     input.parentElement.appendChild(div)
 
     if (input.id == "shortdescription") {
-        input.parentElement.insertBefore(div, input);
+        input.parentElement.children[0].appendChild(div);
     }
     input.addEventListener("input", formValidation);
     formValidation(input);

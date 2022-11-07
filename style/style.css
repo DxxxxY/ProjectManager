@@ -172,8 +172,10 @@ select {
     box-sizing: border-box;
 }
 
-div.entry input {
-    height: 100%;
+div.entry input,
+div.entry select {
+    height: auto;
+    width: 100%;
 }
 
 button {
@@ -191,10 +193,20 @@ button {
     background-color: rgb(135, 2, 10) !important;
     color: white;
     height: 30px;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+div.labelsquare:last-of-type {
+    display: flex;
+}
+
+.imgwrap {
+    height: auto;
+    display: flex;
+    align-items: center;
 }
 
 #query {
@@ -255,7 +267,7 @@ div.tablecontrols button {
 }
 
 p {
-    margin: 2px;
+    margin: 2px 0 0;
     padding: 0%;
 }
 
