@@ -147,73 +147,98 @@ const updateTable = projects => {
                 </tr>`
     }).join("")
 
-    document.querySelector("img.edit:last-child").addEventListener("click", e => {
-        console.log("edit")
+    document.querySelectorAll("img.edit").forEach(edit => {
+        edit.outerHTML = edit.outerHTML
 
-        //get table row matching proj_id
-        const row = e.target.parentElement.parentElement
+        edit.addEventListener("click", e => {
 
-        //get project from projects array matching proj_id
-        // const project = projects.find(project => project.proj_id === row.children[0].textContent)
 
-        //clone inputs from form above
-        let inputs = Array.from(document.querySelectorAll(".entry>input, .entry>textarea, select")).map(input => input.cloneNode(true))
+            console.log("edit")
 
-        console.log(inputs)
 
-        //set td values to inputs
-        // console.log(row.children)
+            //get table row matching proj_id
+            const row = e.target.parentElement.parentElement
 
-        //if row contains inputs, remove them and set td values to inputs
-        if (row.children[0].children[0]) {
-            inputs = Array.from(row.children).map(td => td.children[0])
+            //get project from projects array matching proj_id
+            // const project = projects.find(project => project.proj_id === row.children[0].textContent)
 
-            const updatedProject = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
+            //clone inputs from form above
+            let inputs = Array.from(document.querySelectorAll(".entry>input, .entry>textarea, select")).map(input => input.cloneNode(true))
 
-            inputs.forEach(input => {
-                console.log(input)
+            console.log(inputs)
+
+            //set td values to inputs
+            // console.log(row.children)
+
+            //if row contains inputs, remove them and set td values to inputs
+            if (row.children[0].children[0]) {
+                inputs = Array.from(row.children).map(td => td.children[0])
+
+                const updatedProject = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
+
+                inputs.forEach(input => {
+                    console.log(input)
+                })
+
+                row.innerHTML = Array.from(row.children).filter(child => child.children[0].tagName != "IMG").map((td, i) => {
+                    return `<td>${td.children[0].value}</td>`
+                }).join("") + `<td><img class="edit" src="images/edit.png" alt="edit" /></td>` + `<td><img class="trash" src="images/trash.png" alt="trash" /></td>`
+
+                //update project in projects
+                const index = projects.findIndex(project => project.proj_id == row.children[0].textContent)
+
+                projects.forEach(proj => {
+                    console.log(row.children[0])
+                    console.log(proj.proj_id, row.children[0].textContent)
+                    console.log(proj.proj_id == row.children[0].textContent)
+                })
+
+                console.log(projects[index])
+
+                // projects[index] = Object.fromEntries(Array.from(row.children).map(td => {
+                //     console.log(td.children[0])
+                //         // console.log([td.children[0].id, td.children[0].value])
+
+                // }))
+
+                // projects[index] = Array.from(row.children).forEach(td => {
+                //     console.log(td)
+                //         // console.log([td.children[0].id, td.children[0].value])
+
+                // })
+
+                projects[index] = updatedProject
+
+                return
+            }
+
+            Array.from(row.children).forEach((td, i) => {
+                if (!inputs[i]) return
+
+                inputs[i].className = "edit"
+                inputs[i].value = td.textContent
+
+                td.textContent = ""
+                td.appendChild(inputs[i])
             })
+        })
+    })
 
-            row.innerHTML = Array.from(row.children).filter(child => child.children[0].tagName != "IMG").map((td, i) => {
-                return `<td>${td.children[0].value}</td>`
-            }).join("") + `<td><img class="edit" src="images/edit.png" alt="edit" /></td>` + `<td><img class="trash" src="images/trash.png" alt="trash" /></td>`
+    document.querySelectorAll("img.trash").forEach(trash => {
+        trash.outerHTML = trash.outerHTML
 
-            //update project in projects
+        trash.addEventListener("click", e => {
+            console.log("trash")
+
+            //get table row matching proj_id
+            const row = e.target.parentElement.parentElement
+
+            //remove project from projects array matching proj_id
             const index = projects.findIndex(project => project.proj_id == row.children[0].textContent)
+            projects.splice(index, 1)
 
-            projects.forEach(proj => {
-                console.log(row.children[0])
-                console.log(proj.proj_id, row.children[0].textContent)
-                console.log(proj.proj_id == row.children[0].textContent)
-            })
-
-            console.log(projects[index])
-
-            // projects[index] = Object.fromEntries(Array.from(row.children).map(td => {
-            //     console.log(td.children[0])
-            //         // console.log([td.children[0].id, td.children[0].value])
-
-            // }))
-
-            // projects[index] = Array.from(row.children).forEach(td => {
-            //     console.log(td)
-            //         // console.log([td.children[0].id, td.children[0].value])
-
-            // })
-
-            projects[index] = updatedProject
-
-            return
-        }
-
-        Array.from(row.children).forEach((td, i) => {
-            if (!inputs[i]) return
-
-            inputs[i].className = "edit"
-            inputs[i].value = td.textContent
-
-            td.textContent = ""
-            td.appendChild(inputs[i])
+            //remove row
+            row.remove()
         })
     })
 }
