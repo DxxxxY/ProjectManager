@@ -4,74 +4,80 @@ let form = document.getElementsByTagName('form')[0];
 let addButton = document.getElementById("Add");
 let inputs = document.querySelectorAll(".entry>input, .entry>textarea, select");
 
-reset.addEventListener("click", resetform,true);
+reset.addEventListener("click", resetform, true);
 
 //input event loop
 inputs.forEach(input => {
     let img = document.createElement('img')
-    img.setAttribute('class',"wrong")
-    img.setAttribute('id',input.id+"-img")
-    img.setAttribute('src',"images/wrong.png")
+    img.setAttribute('class', "wrong")
+    img.setAttribute('id', input.id + "-img")
+    img.setAttribute('src', "images/wrong.png")
     div = document.createElement('div')
-        div.appendChild(img)
+    div.appendChild(img)
     input.parentElement.appendChild(div)
 
-    if(input.id=="shortdescription")
-    {
-        input.parentElement.insertBefore(div,input);
+    if (input.id == "shortdescription") {
+        input.parentElement.insertBefore(div, input);
     }
-    input.addEventListener("blur", formValidation);   
+    input.addEventListener("input", formValidation);
     formValidation(input);
 })
+
 //handler
 function formValidation(e) {
-    if(e.target!=null)
-    {e = e.target;}
-    if( document.getElementById('em-'+e.id)!=null){
-        document.getElementById('em-'+e.id).remove();
+    if (e.target != null) { e = e.target; }
+    if (document.getElementById('em-' + e.id) != null) {
+        document.getElementById('em-' + e.id).remove();
     }
-    let img = document.getElementById(e.id+"-img");
-    if (e.validity.valid)
-    {
+    let img = document.getElementById(e.id + "-img");
+    if (e.validity.valid) {
         img.class = "correct";
-        img.src="images/right.png";
-    }else if (!e.validity.valid) {
+        img.src = "images/right.png";
+    } else if (!e.validity.valid) {
         img.class = 'wrong';
-        img.src="images/wrong.png";
+        img.src = "images/wrong.png";
         errorMsg = document.createElement('p');
-        errorMsg.setAttribute('id','em-'+e.id);
-        errorMsg.setAttribute('class','inputerror');
-        errorMsg.textContent = "↑ Incorrect format for "+e.id+" ↑";
+        errorMsg.setAttribute('id', 'em-' + e.id);
+        errorMsg.setAttribute('class', 'inputerror');
+        errorMsg.textContent = "↑ Incorrect format for " + e.id + " ↑";
         e.parentElement.parentElement.append(errorMsg);
     }
-    formvalid(); 
+    formvalid();
 }
+
 //reset button handler
-function resetform(e){
- form.reset();
- inputs.forEach(element => {
-    formValidation(element);
- });
+function resetform(e) {
+    form.reset();
+    inputs.forEach(element => {
+        formValidation(element);
+    });
 }
+
 //check if form inputs all valid
-function formvalid(){
+function formvalid() {
     valid = true
     inputs.forEach(element => {
-      if(!element.validity.valid){
-        valid = false;
-      }  
+        if (!element.validity.valid) {
+            valid = false;
+        }
     });
-    if (valid)
-    {
+    if (valid) {
         addButton.disabled = false;
         addButton.style.backgroundColor = "";
-    }else
-    {
+    } else {
         addButton.disabled = true;
         addButton.style.backgroundColor = "grey";
     }
 }
 //______________________________________________
+
+const add = document.querySelector("#Add")
+add.addEventListener("click", e => {
+    const project = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
+    projects.push(project)
+    updateTable(projects)
+    console.log(project)
+})
 
 //sample project array
 const projects = [{
