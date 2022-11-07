@@ -148,11 +148,14 @@ const updateTable = projects => {
     }).join("")
 
     document.querySelectorAll("img.edit").forEach(edit => {
+        console.log(edit)
+
         edit.outerHTML = edit.outerHTML
+    })
+
+    document.querySelectorAll("img.edit").forEach(edit => {
 
         edit.addEventListener("click", e => {
-
-
             console.log("edit")
 
 
@@ -226,6 +229,9 @@ const updateTable = projects => {
 
     document.querySelectorAll("img.trash").forEach(trash => {
         trash.outerHTML = trash.outerHTML
+    })
+
+    document.querySelectorAll("img.trash").forEach(trash => {
 
         trash.addEventListener("click", e => {
             console.log("trash")
