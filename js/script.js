@@ -149,7 +149,8 @@ const updateTable = projects => {
 
             //if row contains inputs, remove them and set td values to inputs
             if (row.children[0].children[0]) {
-                // inputs = Array.from(row.children).map(td => td.children[0])
+                //get inputs from row
+                inputs = Array.from(row.children).map(td => td.children[0])
 
                 //get updated project from inputs
                 const updatedProject = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
