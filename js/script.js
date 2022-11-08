@@ -144,7 +144,7 @@ const updateTable = projects => {
                     <td>${project.hours}</td>
                     <td>${project.rate}</td>
                     <td>${project.status}</td>
-                    <td>${project.description}</td>
+                    <td>${project.shortdescription}</td>
                     <td><img class="edit" src="images/edit.png" alt="edit" /></td>
                     <td><img class="trash" src="images/trash.png" alt="trash" /></td>
                 </tr>`
