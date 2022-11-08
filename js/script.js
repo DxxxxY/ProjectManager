@@ -281,6 +281,9 @@ add.addEventListener("click", e => {
 
     //update table
     updateTable(projects)
+
+    //reset form
+    resetform()
 })
 
 write.addEventListener("click", writeLocal)
