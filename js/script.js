@@ -131,6 +131,7 @@ const appendLocal = () => {
 
 //clear local storage without clearing projects array
 const clearLocal = () => {
+    if (!confirm("Are you sure you want to clear local storage?")) return
     localStorage.clear()
     updateStatus("Cleared local storage")
 }
