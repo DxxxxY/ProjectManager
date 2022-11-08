@@ -72,60 +72,46 @@ function formvalid() {
 }
 //______________________________________________
 
-const add = document.querySelector("#Add")
-add.addEventListener("click", e => {
-    const project = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
-    projects.push(project)
-    updateTable(projects)
-
-    console.log(project)
-})
-
-document.querySelectorAll(".edit").forEach(edit => {
-    console.log(edit)
-
-})
-
-//sample project array
+//init project array
 const projects = []
 
+//write and overwrite local storage
 const writeLocal = () => {
-    //set (overwrite)
     localStorage.setItem("data", JSON.stringify(projects))
-
     console.log("written", projects)
 }
 
+//add to local storage and keep previous
 const appendLocal = () => {
     const local = JSON.parse(localStorage.getItem("data"))
+    if (!local || local.length < 1) return writeLocal()
 
     //write only new projects
-    let toWrite = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
+    const toWrite = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
     toWrite.push(...projects)
 
-    localStorage.setItem("data", JSON.stringify(toWrite))
-
     console.log("appended", toWrite)
+    localStorage.setItem("data", JSON.stringify(toWrite))
 }
 
+//clear local storage without clearing projects array
 const clearLocal = () => {
-    //clear
     localStorage.clear()
-
     console.log("cleared")
 }
 
+//load projects from local storage and append to projects array
 const loadLocal = () => {
     const local = JSON.parse(localStorage.getItem("data"))
-    if (!local) return updateTable(projects)
+    if (!local || local.length < 1) return updateTable(projects)
 
     //load only new projects
-    let toLoad = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
+    const toLoad = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
     projects.push(...toLoad)
 
-    console.log("loaded", projects)
-
+    //update table
     updateTable(projects)
+    console.log("loaded", projects)
 }
 
 const updateTable = projects => {
@@ -148,74 +134,39 @@ const updateTable = projects => {
                 </tr>`
     }).join("")
 
-    document.querySelectorAll("img.edit").forEach(edit => {
-        console.log(edit)
-
-        edit.outerHTML = edit.outerHTML
+    //"clone" element to remove event listener (separate forEach because of async)
+    document.querySelectorAll("img.trash, img.edit").forEach(button => {
+        button.outerHTML = button.outerHTML
     })
 
     document.querySelectorAll("img.edit").forEach(edit => {
-
         edit.addEventListener("click", e => {
-            console.log("edit")
-
-
             //get table row matching proj_id
             const row = e.target.parentElement.parentElement
-
-            //get project from projects array matching proj_id
-            // const project = projects.find(project => project.proj_id === row.children[0].textContent)
 
             //clone inputs from form above
             let inputs = Array.from(document.querySelectorAll(".entry>input, .entry>textarea, select")).map(input => input.cloneNode(true))
 
-            console.log(inputs)
-
-            //set td values to inputs
-            // console.log(row.children)
-
             //if row contains inputs, remove them and set td values to inputs
             if (row.children[0].children[0]) {
-                inputs = Array.from(row.children).map(td => td.children[0])
+                // inputs = Array.from(row.children).map(td => td.children[0])
 
+                //get updated project from inputs
                 const updatedProject = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
 
-                inputs.forEach(input => {
-                    console.log(input)
-                })
-
-                row.innerHTML = Array.from(row.children).filter(child => child.children[0].tagName != "IMG").map((td, i) => {
+                //set row (update row)
+                row.innerHTML = Array.from(row.children).filter(child => child.children[0].tagName != "IMG").map(td => {
                     return `<td>${td.children[0].value}</td>`
                 }).join("") + `<td><img class="edit" src="images/edit.png" alt="edit" /></td>` + `<td><img class="trash" src="images/trash.png" alt="trash" /></td>`
 
-                //update project in projects
+                //get index of original project
                 const index = projects.findIndex(project => project.proj_id == row.children[0].textContent)
 
-                projects.forEach(proj => {
-                    console.log(row.children[0])
-                    console.log(proj.proj_id, row.children[0].textContent)
-                    console.log(proj.proj_id == row.children[0].textContent)
-                })
-
-                console.log(projects[index])
-
-                // projects[index] = Object.fromEntries(Array.from(row.children).map(td => {
-                //     console.log(td.children[0])
-                //         // console.log([td.children[0].id, td.children[0].value])
-
-                // }))
-
-                // projects[index] = Array.from(row.children).forEach(td => {
-                //     console.log(td)
-                //         // console.log([td.children[0].id, td.children[0].value])
-
-                // })
-
-                projects[index] = updatedProject
-
-                return
+                //update project
+                return projects[index] = updatedProject
             }
 
+            //set td values to inputs
             Array.from(row.children).forEach((td, i) => {
                 if (!inputs[i]) return
 
@@ -228,15 +179,9 @@ const updateTable = projects => {
         })
     })
 
+    //add event listeners to remove the row from the table
     document.querySelectorAll("img.trash").forEach(trash => {
-        trash.outerHTML = trash.outerHTML
-    })
-
-    document.querySelectorAll("img.trash").forEach(trash => {
-
         trash.addEventListener("click", e => {
-            console.log("trash")
-
             //get table row matching proj_id
             const row = e.target.parentElement.parentElement
 
@@ -255,12 +200,10 @@ const getProjects = query => {
     if (!query) return projects
 
     //return projects from projects array that one of their properties contains query
-    return projects.filter(project => {
-        for (const property in project) {
-            if (project[property].toString().toLowerCase().includes(query.toLowerCase())) return true
-        }
-    })
+    return projects.filter(p => Object.values(p).find(v => v.toString().toLowerCase().includes(query)))
 }
+
+const add = document.querySelector("#Add")
 
 const write = document.querySelector("#write")
 const append = document.querySelector("#append")
@@ -268,6 +211,17 @@ const clear = document.querySelector("#clear")
 const load = document.querySelector("#load")
 
 const query = document.querySelector("#query")
+
+add.addEventListener("click", e => {
+    //construct object from form inputs
+    const project = Object.fromEntries(Array.from(inputs).map(input => [input.id, input.value]))
+
+    //add to projects array
+    projects.push(project)
+
+    //update table
+    updateTable(projects)
+})
 
 write.addEventListener("click", writeLocal)
 append.addEventListener("click", appendLocal)
