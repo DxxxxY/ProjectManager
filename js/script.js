@@ -247,7 +247,10 @@ const updateTable = projects => {
 
 const getProjects = query => {
     //return all if query is empty
-    if (!query) return projects
+    if (!query) {
+        updateStatus("")
+        return projects
+    }
 
     //return projects from projects array that one of their properties contains query
     const queried = projects.filter(p => Object.values(p).find(v => v.toString().toLowerCase().includes(query)))
