@@ -236,9 +236,11 @@ const updateTable = projects => {
 
             //remove project from localstorage by proj_id and save
             const local = JSON.parse(localStorage.getItem("data"))
-            index = local.findIndex(project => project.proj_id == row.children[0].textContent)
-            local.splice(index, 1)
-            localStorage.setItem("data", JSON.stringify(local))
+            if (local) {
+                index = local.findIndex(project => project.proj_id == row.children[0].textContent)
+                local.splice(index, 1)
+                localStorage.setItem("data", JSON.stringify(local))
+            }
 
             //remove row
             row.remove()
