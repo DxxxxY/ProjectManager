@@ -17,6 +17,9 @@ const regex = {
     shortdescription: /^[A-Za-z0-9 ]+$/,
 }
 
+//init project array
+const projects = []
+
 //input event loop
 inputs.forEach(input => {
     let img = document.createElement('img')
@@ -74,6 +77,23 @@ function formvalid() {
         }
     });
 
+    //check for duplicate project id
+    if (projects.find(p => p.proj_id === document.getElementById("proj_id").value)) {
+        valid = false;
+        document.getElementById("proj_id-img").src = "images/wrong.png";
+        document.getElementById("proj_id-img").class = "wrong";
+
+        //add error message
+        if (document.getElementById('em-proj_id') == null) {
+            errorMsg = document.createElement('p');
+            errorMsg.setAttribute('id', 'em-proj_id');
+            errorMsg.setAttribute('class', 'inputerror');
+            errorMsg.textContent = "↑ Duplicate project id ↑";
+            document.getElementById("proj_id").parentElement.parentElement.append(errorMsg);
+        }
+    }
+
+
     if (valid) {
         addButton.disabled = false;
         addButton.style.backgroundColor = "";
@@ -87,9 +107,6 @@ function isInputValid(input) {
     return regex[input.id].test(input.value)
 }
 
-
-//init project array
-const projects = []
 
 //write and overwrite local storage
 const writeLocal = () => {
@@ -199,12 +216,20 @@ const updateTable = projects => {
     //add event listeners to remove the row from the table
     document.querySelectorAll("img.trash").forEach(trash => {
         trash.addEventListener("click", e => {
+            if (!confirm("Are you sure you want to delete this project?")) return
+
             //get table row matching proj_id
             const row = e.target.parentElement.parentElement
 
             //remove project from projects array matching proj_id
-            const index = projects.findIndex(project => project.proj_id == row.children[0].textContent)
+            let index = projects.findIndex(project => project.proj_id == row.children[0].textContent)
             projects.splice(index, 1)
+
+            //remove project from localstorage by proj_id and save
+            const local = JSON.parse(localStorage.getItem("data"))
+            index = local.findIndex(project => project.proj_id == row.children[0].textContent)
+            local.splice(index, 1)
+            localStorage.setItem("data", JSON.stringify(local))
 
             //remove row
             row.remove()
