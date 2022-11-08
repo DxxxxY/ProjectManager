@@ -109,33 +109,36 @@ function isInputValid(input) {
 
 //write and overwrite local storage
 const writeLocal = () => {
+    if (projects.length < 1) return updateStatus("No projects to save")
+
     localStorage.setItem("data", JSON.stringify(projects))
-    console.log("written", projects)
+    updateStatus(`Saved ${projects.length} projects`)
 }
 
 //add to local storage and keep previous
 const appendLocal = () => {
     const local = JSON.parse(localStorage.getItem("data"))
+    if (projects.length < 1) return updateStatus("No projects to append")
     if (!local || local.length < 1) return writeLocal()
 
     //write only new projects
     const toWrite = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
     toWrite.push(...projects)
 
-    console.log("appended", toWrite)
     localStorage.setItem("data", JSON.stringify(toWrite))
+    updateStatus(`Saved ${toWrite.length} projects`)
 }
 
 //clear local storage without clearing projects array
 const clearLocal = () => {
     localStorage.clear()
-    console.log("cleared")
+    updateStatus("Cleared local storage")
 }
 
 //load projects from local storage and append to projects array
 const loadLocal = () => {
     const local = JSON.parse(localStorage.getItem("data"))
-    if (!local || local.length < 1) return updateTable(projects)
+    if (!local || local.length < 1) return updateStatus("No projects to load")
 
     //load only new projects
     const toLoad = local.filter(project => !projects.find(proj => proj.proj_id === project.proj_id))
@@ -143,7 +146,7 @@ const loadLocal = () => {
 
     //update table
     updateTable(projects)
-    console.log("loaded", projects)
+    updateStatus(`Loaded ${toLoad.length} projects`)
 }
 
 const updateTable = projects => {
@@ -247,7 +250,9 @@ const getProjects = query => {
     if (!query) return projects
 
     //return projects from projects array that one of their properties contains query
-    return projects.filter(p => Object.values(p).find(v => v.toString().toLowerCase().includes(query)))
+    const queried = projects.filter(p => Object.values(p).find(v => v.toString().toLowerCase().includes(query)))
+    updateStatus(`Query returned ${queried.length} projects for "${query}"`)
+    return queried
 }
 
 const add = document.querySelector("#Add")
@@ -258,6 +263,8 @@ const clear = document.querySelector("#clear")
 const load = document.querySelector("#load")
 
 const query = document.querySelector("#query")
+
+const status = document.querySelector(".status")
 
 add.addEventListener("click", e => {
     //construct object from form inputs
@@ -278,3 +285,7 @@ load.addEventListener("click", loadLocal)
 query.addEventListener("input", () => {
     updateTable(getProjects(query.value))
 })
+
+const updateStatus = (msg) => {
+    status.textContent = msg
+}
