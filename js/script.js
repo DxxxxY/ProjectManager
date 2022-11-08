@@ -151,7 +151,7 @@ const updateTable = projects => {
     const table = document.querySelector("tbody")
 
     //set table to have projects rows
-    table.innerHTML = projects.map(project => {
+    table.innerHTML = projects.sort((a, b) => a.proj_id - b.proj_id).map(project => {
         return `<tr>
                     <td>${project.proj_id}</td>
                     <td>${project.owner}</td>
