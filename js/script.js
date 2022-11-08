@@ -286,7 +286,7 @@ append.addEventListener("click", appendLocal)
 clear.addEventListener("click", clearLocal)
 load.addEventListener("click", loadLocal)
 
-query.addEventListener("input", () => {
+query.addEventListener("input", function() {
     updateTable(getProjects(query.value))
 })
 
