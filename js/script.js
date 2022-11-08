@@ -6,6 +6,17 @@ let inputs = document.querySelectorAll(".entry>input, .entry>textarea, .entry>se
 
 reset.addEventListener("click", resetform, true);
 
+const regex = {
+    proj_id: /^[A-Za-z0-9 ]+$/,
+    owner: /^[A-Za-z ]+$/,
+    title: /^[A-Za-z0-9 ]+$/,
+    category: /^[A-Za-z ]+$/,
+    hours: /^[0-9]+$/,
+    rate: /^[0-9]+$/,
+    status: /^[A-Za-z ]+$/,
+    shortdescription: /^[A-Za-z0-9 ]+$/,
+}
+
 //input event loop
 inputs.forEach(input => {
     let img = document.createElement('img')
@@ -31,10 +42,10 @@ function formValidation(e) {
         document.getElementById('em-' + e.id).remove();
     }
     let img = document.getElementById(e.id + "-img");
-    if (e.validity.valid) {
+    if (isInputValid(e)) {
         img.class = "correct";
         img.src = "images/right.png";
-    } else if (!e.validity.valid) {
+    } else {
         img.class = 'wrong';
         img.src = "images/wrong.png";
         errorMsg = document.createElement('p');
@@ -57,11 +68,12 @@ function resetform(e) {
 //check if form inputs all valid
 function formvalid() {
     valid = true
-    inputs.forEach(element => {
-        if (!element.validity.valid) {
+    inputs.forEach(input => {
+        if (!isInputValid(input)) {
             valid = false;
         }
     });
+
     if (valid) {
         addButton.disabled = false;
         addButton.style.backgroundColor = "";
@@ -70,7 +82,11 @@ function formvalid() {
         addButton.style.backgroundColor = "grey";
     }
 }
-//______________________________________________
+
+function isInputValid(input) {
+    return regex[input.id].test(input.value)
+}
+
 
 //init project array
 const projects = []
