@@ -93,7 +93,6 @@ function formvalid() {
         }
     }
 
-
     if (valid) {
         addButton.disabled = false;
         addButton.style.backgroundColor = "";
@@ -196,6 +195,9 @@ const updateTable = projects => {
                 //get index of original project
                 const index = projects.findIndex(project => project.proj_id == row.children[0].textContent)
 
+                //set save icon to edit icon
+                e.target.src = "images/edit.png"
+
                 //update project
                 return projects[index] = updatedProject
             }
@@ -210,6 +212,9 @@ const updateTable = projects => {
                 td.textContent = ""
                 td.appendChild(inputs[i])
             })
+
+            //set edit icon to save icon
+            e.target.src = "images/save.png"
         })
     })
 
